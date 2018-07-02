@@ -1,0 +1,23 @@
+{
+  "name": "koa-static-304",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/huyuqiong/koa-static-304.git"
+  },
+  "keywords": [
+    "koa",
+    "static"
+  ],
+  "author": "huyuqiong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huyuqiong/koa-static-304/issues"
+  },
+  "homepage": "https://github.com/huyuqiong/koa-static-304#readme"
+}
