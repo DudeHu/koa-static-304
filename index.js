@@ -25,7 +25,7 @@ module.exports = serve
 function serve (root, opts) {
   opts = Object.assign({}, opts)
 
-  assert(root, 'root directory is required to serve files')
+  if(!root) throw new Error('root directory is required to serve files')
 
   // options
   opts.root = resolve(root)
@@ -34,13 +34,11 @@ function serve (root, opts) {
   if (!opts.defer) {
     return async function serve (ctx, next) {
       let done = false
-
       if (ctx.method === 'HEAD' || ctx.method === 'GET') {
         try {
           done =  await send(ctx, ctx.path, Object.assign(opts, { setHeaders: function(res, path, stats){
-              const {header} = req;
-              if (header['if-modified-since'] === stats.mtime.toUTCString()) {
-                res.status = 304;
+              if (ctx.headers['if-modified-since'] === stats.mtime.toUTCString()) {
+                ctx.status = 304;
               }
             }}))
         } catch (err) {
@@ -65,9 +63,8 @@ function serve (root, opts) {
 
     try {
       await send(ctx, ctx.path, Object.assign(opts, { setHeaders: function(res, path, stats){
-        const {header} = req;
-        if (header['if-modified-since'] === stats.mtime.toUTCString()) {
-          res.status = 304;
+       if (ctx.headers['if-modified-since'] === stats.mtime.toUTCString()) {
+          ctx.status = 304;
         }
         }}))
     } catch (err) {
