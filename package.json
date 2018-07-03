@@ -1,6 +1,6 @@
 {
   "name": "koa-static-304",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/huyuqiong/koa-static-304/issues"
   },
-  "homepage": "https://github.com/huyuqiong/koa-static-304#readme"
+  "homepage": "https://github.com/huyuqiong/koa-static-304#readme",
+  "dependencies": {
+    "koa-send": "^5.0.0"
+  }
 }
